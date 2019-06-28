@@ -22,5 +22,6 @@ $('#minute').html('@keyframes minuteMove{0%{transform:rotate(' + minuteDeg + 'de
 $('#hour').html('@keyframes hourMove{0%{transform:rotate(' + hourDeg + 'deg);}100%{transform: rotate(' + (360 + hourDeg) + 'deg);}}');
 ```
 具体的代码在Clock.html里面可见。
+如果引用此代码，请您在用到的地方加上我的名字和我的链接，谢谢～
 访问链接：
 https://zhengxianyu.github.io/Clock/Clock.html
