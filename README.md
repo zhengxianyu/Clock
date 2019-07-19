@@ -26,4 +26,4 @@ $('#hour').html('@keyframes hourMove{0%{transform:rotate(' + hourDeg + 'deg);}10
 如果引用此代码，请您在用到的地方加上我的名字和我的链接，谢谢～
 
 访问链接：
-https://zhengxianyu.github.io/Clock/index
+https://zhengxianyu.github.io/Clock/
