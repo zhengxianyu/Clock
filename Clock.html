@@ -5,285 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <title>Vivien's Clock</title>
-    <style>
-      .clock-body {
-        width: 300px;
-        height: 300px;
-        border: 2px solid #333;
-        border-radius: 500px;
-        position: absolute;
-        border: 20px solid #d9d9d9;
-        box-shadow: 20px 20px 30px -10px rgba(0, 0, 0, 0.4), inset 10px 10px 20px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-      }
-
-      .clock-body:after {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        content: "";
-        border-radius: 50%;
-        z-index: 9999;
-        background-image: -webkit-linear-gradient(top left, rgba(255, 255, 255, 0) 0%, 59%, rgba(255, 255, 255, 0.7) 60%, rgba(255, 255, 255, 0) 80%), -webkit-linear-gradient(top left, rgba(255, 255, 255, 0) 0%, 30%, rgba(255, 255, 255, 0.3) 35%, rgba(255, 255, 255, 0.5) 40%, rgba(255, 255, 255, 0) 45%);
-        background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0) 0%, 59%, rgba(255, 255, 255, 0.7) 60%, rgba(255, 255, 255, 0) 80%), linear-gradient(to bottom right, rgba(255, 255, 255, 0) 0%, 30%, rgba(255, 255, 255, 0.3) 35%, rgba(255, 255, 255, 0.5) 40%, rgba(255, 255, 255, 0) 45%);
-      }
-
-      .clock-line {
-        height: 300px;
-        width: 2px;
-        position: absolute;
-      }
-
-      .clock-line:first-child {
-        transform: translateX(150px);
-      }
-
-      .clock-line:first-child .line,
-      .clock-line:nth-child(6) .line,
-      .clock-line:nth-child(11) .line,
-      .clock-line:nth-child(16) .line,
-      .clock-line:nth-child(21) .line,
-      .clock-line:nth-child(26) .line {
-        height: 15px;
-      }
-
-      .clock-line:nth-child(2) {
-        transform: translateX(150px) rotate(6deg);
-      }
-
-      .clock-line:nth-child(3) {
-        transform: translateX(150px) rotate(12deg);
-      }
-
-      .clock-line:nth-child(4) {
-        transform: translateX(150px) rotate(18deg);
-      }
-
-      .clock-line:nth-child(5) {
-        transform: translateX(150px) rotate(24deg);
-      }
-
-      .clock-line:nth-child(6) {
-        transform: translateX(150px) rotate(30deg);
-      }
-
-      .clock-line:nth-child(7) {
-        transform: translateX(150px) rotate(36deg);
-      }
-
-      .clock-line:nth-child(8) {
-        transform: translateX(150px) rotate(42deg);
-      }
-
-      .clock-line:nth-child(9) {
-        transform: translateX(150px) rotate(48deg);
-      }
-
-      .clock-line:nth-child(10) {
-        transform: translateX(150px) rotate(54deg);
-      }
-
-      .clock-line:nth-child(11) {
-        transform: translateX(150px) rotate(60deg);
-      }
-
-      .clock-line:nth-child(12) {
-        transform: translateX(150px) rotate(66deg);
-      }
-
-      .clock-line:nth-child(13) {
-        transform: translateX(150px) rotate(72deg);
-      }
-
-      .clock-line:nth-child(14) {
-        transform: translateX(150px) rotate(78deg);
-      }
-
-      .clock-line:nth-child(15) {
-        transform: translateX(150px) rotate(84deg);
-      }
-
-      .clock-line:nth-child(16) {
-        transform: translateX(150px) rotate(90deg);
-      }
-
-      .clock-line:nth-child(17) {
-        transform: translateX(150px) rotate(96deg);
-      }
-
-      .clock-line:nth-child(18) {
-        transform: translateX(150px) rotate(102deg);
-      }
-
-      .clock-line:nth-child(19) {
-        transform: translateX(150px) rotate(108deg);
-      }
-
-      .clock-line:nth-child(20) {
-        transform: translateX(150px) rotate(114deg);
-      }
-
-      .clock-line:nth-child(21) {
-        transform: translateX(150px) rotate(120deg);
-      }
-
-      .clock-line:nth-child(22) {
-        transform: translateX(150px) rotate(126deg);
-      }
-
-      .clock-line:nth-child(23) {
-        transform: translateX(150px) rotate(132deg);
-      }
-
-      .clock-line:nth-child(24) {
-        transform: translateX(150px) rotate(138deg);
-      }
-
-      .clock-line:nth-child(25) {
-        transform: translateX(150px) rotate(144deg);
-      }
-
-      .clock-line:nth-child(26) {
-        transform: translateX(150px) rotate(150deg);
-      }
-
-      .clock-line:nth-child(27) {
-        transform: translateX(150px) rotate(156deg);
-      }
-
-      .clock-line:nth-child(28) {
-        transform: translateX(150px) rotate(162deg);
-      }
-
-      .clock-line:nth-child(29) {
-        transform: translateX(150px) rotate(168deg);
-      }
-
-      .clock-line:nth-child(30) {
-        transform: translateX(150px) rotate(174deg);
-      }
-
-      .line {
-        height: 10px;
-        width: 100%;
-        background: #333;
-        position: absolute;
-      }
-
-      .line:first-child {
-        top: 3px;
-      }
-
-      .line:nth-child(2) {
-        bottom: 3px;
-      }
-
-      .clock-line .line:first-child .clock-number {
-        position: absolute;
-        top: 20px;
-        font-size: 20px;
-        left: -5px;
-      }
-
-      .clock-line .line:nth-child(2) .clock-number {
-        position: absolute;
-        bottom: 20px;
-        font-size: 20px;
-        left: -5px;
-      }
-
-      .clock-line:nth-child(6) .clock-number {
-        transform: rotate(-30deg);
-      }
-
-      .clock-line:nth-child(11) .clock-number {
-        transform: rotate(-60deg);
-      }
-
-      .clock-line:nth-child(16) .clock-number {
-        transform: rotate(-90deg);
-      }
-
-      .clock-line:nth-child(21) .clock-number {
-        transform: rotate(-120deg);
-      }
-
-      .clock-line:nth-child(26) .clock-number {
-        transform: rotate(-150deg);
-      }
-
-      .clock-second, .clock-hour, .clock-minute {
-        position: absolute;
-        left: 50%;
-        content: "";
-        width: 4px;
-        transform-origin: 50% 100%;
-      }
-
-      .clock-second {
-        background: red;
-        top: 15%;
-        height: 120px;
-        animation: secondMove 60s linear infinite;
-      }
-
-      .clock-minute {
-        top: 21%;
-        background: black;
-        height: 100px;
-        animation: minuteMove 3600s linear infinite;
-      }
-
-      .clock-hour {
-        top: 27%;
-        background: black;
-        height: 80px;
-        animation: hourMove 216000s linear infinite;
-      }
-
-      .clock-dot {
-        position: absolute;
-        top: 48.5%;
-        left: 48.5%;
-        width: 12px;
-        height: 12px;
-        background: black;
-        border-radius: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="clock.css" type="text/css"></link>
     <style id="second">
       @keyframes secondMove {
-        0% {       
-          transform: rotate(0deg);     
-        }     
-        100% {         
-          transform: rotate(360deg);     
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
         }
       }
     </style>
     <style id="minute">
       @keyframes minuteMove {
-        0% {       
-          transform: rotate(0deg);     
-        }     
-        100% {         
-          transform: rotate(360deg);     
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
         }
       }
     </style>
     <style id="hour">
-        @keyframes hourMove {
-          0% {       
-            transform: rotate(0deg);     
-          }     
-          100% {         
-            transform: rotate(360deg);     
-          }
+      @keyframes hourMove {
+        0% {
+          transform: rotate(0deg);
         }
-      </style>
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="clock-body">
@@ -436,17 +188,6 @@
       <div class="clock-hour"></div>
       <div class="clock-dot"></div>
     </div>
-    <script>
-      let now = new Date();
-      let hour = now.getHours();
-      let minute = now.getMinutes();
-      let second = now.getSeconds();
-      let secondDeg = second / 60 * 360;
-      let minuteDeg = (minute + second / 60) / 60 * 360;
-      let hourDeg = (hour + minute / 60 + second / 3600) / 12 * 360;
-      $('#second').html('@keyframes secondMove{0%{transform:rotate(' + secondDeg + 'deg);}100%{transform: rotate(' + (360 + secondDeg) + 'deg);}}');
-      $('#minute').html('@keyframes minuteMove{0%{transform:rotate(' + minuteDeg + 'deg);}100%{transform: rotate(' + (360 + minuteDeg) + 'deg);}}');
-      $('#hour').html('@keyframes hourMove{0%{transform:rotate(' + hourDeg + 'deg);}100%{transform: rotate(' + (360 + hourDeg) + 'deg);}}');
-    </script>
+    <script src="clock.js"></script>
   </body>
 </html>
